@@ -27,4 +27,5 @@ for continent, color in continent_colors.items():
 
 #plt.legend(scatterpoints=1, frameon=False, labelspacing=1, title='Continentes')
 
-plt.show()
+if __name__ == "__main__":
+    plt.show()

@@ -44,7 +44,7 @@ for circuito1, data1 in circuits.items():
             # Adiciona arestas entre dois nós com distância como atributo
             GRAPH.add_edge(circuito1, circuito2, weight=dist)
 
-if "__name__" == "__main__":
+if __name__ == "__main__":
     circuito1 = "Bahrein"
     circuito2 = "Austrália"
     distancia = nx.shortest_path_length(GRAPH, circuito1, circuito2, weight='weight')
