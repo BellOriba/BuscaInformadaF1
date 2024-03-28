@@ -1,11 +1,10 @@
 import networkx as nx
 from geopy.distance import geodesic
 
-# Criar o grafo
-G = nx.Graph()
+GRAPH = nx.Graph()
 
-# Adicionar os circuitos como nós do grafo
-circuitos = {
+# Nome: (Latitude, Longitude, Continente)
+circuits = {
     "Bahrein": (26.03288514680618, 50.51081429999999, "Oriente Médio"),
     "Arábia Saudita": (21.631873729375275, 39.10450086704199, "Oriente Médio"),
     "Austrália": (-37.85007951144554, 144.97000625379565, "Oceania (Austrália)"),
@@ -32,23 +31,21 @@ circuitos = {
     "Emirados Árabes Unidos": (24.470558762968516, 54.605744530685236, "Oriente Médio")
 }
 
-# Verificar se as coordenadas são válidas
-for circuito, (lat, long, continente) in circuitos.items():
+for circuito, (lat, long, continente) in circuits.items():
     if -90 <= lat <= 90 and -180 <= long <= 180:
-        G.add_node(circuito, pos=(long, lat), continent=continente)
+        GRAPH.add_node(circuito, pos=(long, lat), continent=continente) # Adiciona nó ao grafo
     else:
         print(f"As coordenadas do circuito {circuito} estão fora do intervalo válido.")
 
-# Adicionar arestas com distância como atributo
-for circuito1, data1 in circuitos.items():
-    for circuito2, data2 in circuitos.items():
+for circuito1, data1 in circuits.items():
+    for circuito2, data2 in circuits.items():
         if circuito1 != circuito2:
             dist = geodesic((data1[0], data1[1]), (data2[0], data2[1])).kilometers
-            G.add_edge(circuito1, circuito2, weight=dist)
+            # Adiciona arestas entre dois nós com distância como atributo
+            GRAPH.add_edge(circuito1, circuito2, weight=dist)
 
-# Verificar a distância entre dois circuitos
 if "__name__" == "__main__":
     circuito1 = "Bahrein"
     circuito2 = "Austrália"
-    distancia = nx.shortest_path_length(G, circuito1, circuito2, weight='weight')
-    print(f"A distância entre {circuito1} e {circuito2} é de aproximadamente {distancia:.2f} km.")
+    distancia = nx.shortest_path_length(GRAPH, circuito1, circuito2, weight='weight')
+    print(f"A distância entre {circuito1} e {circuito2} é de aproximadamente {distancia:.2f} Km.")
