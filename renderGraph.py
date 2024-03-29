@@ -29,3 +29,4 @@ for continent, color in continent_colors.items():
 
 if __name__ == "__main__":
     plt.show()
+    

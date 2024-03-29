@@ -45,7 +45,10 @@ for circuito1, data1 in circuits.items():
             GRAPH.add_edge(circuito1, circuito2, weight=dist)
 
 if __name__ == "__main__":
-    circuito1 = "Bahrein"
-    circuito2 = "Austrália"
+    circuito1 = "Brasil"
+    circuito2 = "México"
     distancia = nx.shortest_path_length(GRAPH, circuito1, circuito2, weight='weight')
+    distancia2 = nx.shortest_path_length(GRAPH, "Brasil", "Estados Unidos (Miami)", weight='weight')
     print(f"A distância entre {circuito1} e {circuito2} é de aproximadamente {distancia:.2f} Km.")
+    print(f"A distância entre {circuito1} e Miami é de aproximadamente {distancia2:.2f} Km.")
+
