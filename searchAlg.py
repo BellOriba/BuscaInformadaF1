@@ -1,3 +1,4 @@
+# searchAlg.py
 # Nearest-Neighbor Heuristic
 from calendarGraph import GRAPH, circuits 
 import networkx as nx
@@ -21,7 +22,7 @@ def nearest_neighbor_tour(start_circuit):
     return tour, total_distance
 
 if __name__ == "__main__":
-    start_circuit = "Singapura"
+    start_circuit = "Brasil"
 
     num_executions = 1000
     total_execution_time = 0
